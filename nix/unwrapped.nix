@@ -46,6 +46,7 @@ stdenv.mkDerivation {
     fileset = lib.fileset.unions [
       ../CMakeLists.txt
       ../COPYING.md
+      ../craft-edition # Craft Edition fork
 
       ../buildconfig
       ../cmake
@@ -64,7 +65,7 @@ stdenv.mkDerivation {
   # Ensure that instance shortcuts point to our final wrapper, rather than this unwrapped version
   postPatch = ''
     substituteInPlace launcher/minecraft/ShortcutUtils.cpp \
-      --replace-fail 'QApplication::applicationFilePath()' 'QProcessEnvironment::systemEnvironment().value("NIX_LAUNCHER_WRAPPER", "${placeholder "out"}/bin/prismlauncher")'
+      --replace-fail 'QApplication::applicationFilePath()' 'QProcessEnvironment::systemEnvironment().value("NIX_LAUNCHER_WRAPPER", "${placeholder "out"}/bin/craftedition")'
   '';
 
   nativeBuildInputs = [
@@ -119,7 +120,7 @@ stdenv.mkDerivation {
       Scrumplex
       getchoo
     ];
-    mainProgram = "prismlauncher";
+    mainProgram = "craftedition"; # Craft Edition fork
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }
