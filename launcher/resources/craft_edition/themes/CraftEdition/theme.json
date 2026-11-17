@@ -26,6 +26,8 @@
         "Warning": "#f2b13a",
         "Error": "#f0524f",
         "Fatal": "#ff8a87",
-        "FatalHighlight": "#3a1615"
+        "FatalHighlight": "#3a1615",
+        "WarningHighlight": "#2f2410",
+        "ErrorHighlight": "#2f1615"
     }
 }
