@@ -19,6 +19,8 @@ permissions: {}
 jobs:
   blocked_status:
     name: Check Blocked Status
+    # Craft Edition fork: needs Prism's GitHub App secrets, so it only runs upstream.
+    if: github.repository_owner == 'PrismLauncher'
     runs-on: ubuntu-slim
 
     steps:
