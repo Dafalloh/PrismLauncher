@@ -79,8 +79,8 @@
 
 #include "ui/pagedialog/PageDialog.h"
 
-#include "ui/themes/ThemeManager.h"
 #include "ui/themes/CraftEditionTheme.h"
+#include "ui/themes/ThemeManager.h"
 
 #include "ApplicationMessage.h"
 
