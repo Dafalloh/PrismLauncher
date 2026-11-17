@@ -1,0 +1,109 @@
+# Craft Edition fork: bring Prism Launcher's changes into this fork every week.
+#
+# Merges PrismLauncher/PrismLauncher@develop into a sync branch and opens a pull request
+# against our develop branch, so every upstream update is reviewed and built by CI before it
+# lands. If the merge conflicts, it opens an issue listing the files instead.
+#
+# Optional secret SYNC_TOKEN: a fine-grained token with Contents, Pull requests and Workflows
+# write access to this repository. Without it the default GITHUB_TOKEN is used, which GitHub
+# does not allow to push changes to .github/workflows and whose pull requests do not start CI.
+name: Sync with Prism Launcher
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # Mondays 03:00 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: craft-edition-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository != 'PrismLauncher/PrismLauncher'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    env:
+      UPSTREAM: https://github.com/PrismLauncher/PrismLauncher.git
+      UPSTREAM_BRANCH: develop
+      BASE_BRANCH: develop
+      GH_TOKEN: ${{ secrets.SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Merge upstream
+        id: merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "craft-edition-sync[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream "$UPSTREAM"
+          git fetch --no-tags upstream "$UPSTREAM_BRANCH"
+
+          upstream_sha=$(git rev-parse "upstream/$UPSTREAM_BRANCH")
+          echo "upstream_sha=$upstream_sha" >> "$GITHUB_OUTPUT"
+          if git merge-base --is-ancestor "$upstream_sha" HEAD; then
+            echo "Already up to date with Prism Launcher ($upstream_sha)."
+            echo "result=up-to-date" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          branch="sync/prism-${upstream_sha:0:10}"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          git switch -c "$branch"
+          if git merge --no-edit "upstream/$UPSTREAM_BRANCH" -m "Merge Prism Launcher ${upstream_sha:0:10} into Craft Edition"; then
+            echo "result=merged" >> "$GITHUB_OUTPUT"
+          else
+            git diff --name-only --diff-filter=U > conflicts.txt
+            git merge --abort
+            echo "result=conflict" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open pull request
+        if: steps.merge.outputs.result == 'merged'
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch='${{ steps.merge.outputs.branch }}'
+          sha='${{ steps.merge.outputs.upstream_sha }}'
+          if gh pr list --head "$branch" --state open --json number --jq 'length' | grep -qv '^0$'; then
+            echo "A pull request for $branch is already open."
+            exit 0
+          fi
+          git push --force-with-lease origin "$branch"
+          printf '%s\n\n%s\n' \
+            "Merges [PrismLauncher/PrismLauncher@${sha:0:10}](https://github.com/PrismLauncher/PrismLauncher/commit/$sha) into Craft Edition." \
+            "Merge with a merge commit (not squash) so the next sync only brings new commits. After merging, push a version tag to release it to users." \
+            > body.md
+          gh pr create --base "$BASE_BRANCH" --head "$branch" \
+            --title "Sync with Prism Launcher (${sha:0:10})" --body-file body.md
+
+      - name: Report conflicts
+        if: steps.merge.outputs.result == 'conflict'
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha='${{ steps.merge.outputs.upstream_sha }}'
+          title="Prism Launcher update needs a manual merge (${sha:0:10})"
+          if gh issue list --state open --search "$title in:title" --json number --jq 'length' | grep -qv '^0$'; then
+            echo "Issue already open."
+            exit 0
+          fi
+          {
+            echo "Merging [PrismLauncher/PrismLauncher@${sha:0:10}](https://github.com/PrismLauncher/PrismLauncher/commit/$sha) conflicts in:"
+            echo
+            sed 's/^/- `/; s/$/`/' conflicts.txt
+            echo
+            echo "Resolve locally: \`git fetch https://github.com/PrismLauncher/PrismLauncher.git develop && git merge FETCH_HEAD\`."
+          } > body.md
+          gh issue create --title "$title" --body-file body.md

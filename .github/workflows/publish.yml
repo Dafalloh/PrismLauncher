@@ -9,6 +9,8 @@ permissions: {}
 jobs:
   winget:
     name: Winget
+    # Craft Edition fork: only Prism Launcher publishes to its Winget package.
+    if: github.repository == 'PrismLauncher/PrismLauncher'
 
     permissions:
       contents: read
