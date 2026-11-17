@@ -38,6 +38,7 @@
 
 ThemeManager::ThemeManager()
 {
+    CraftEdition::initResources();  // Craft Edition fork
     QIcon::setFallbackThemeName(QIcon::themeName());
     auto searchPaths = QIcon::themeSearchPaths();
     searchPaths.removeOne(":/icons");

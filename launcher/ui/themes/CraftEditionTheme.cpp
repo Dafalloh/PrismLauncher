@@ -24,7 +24,18 @@
 
 #include "ui/themes/ThemeManager.h"
 
+// Q_INIT_RESOURCE declares a global function, so it has to be called outside any namespace.
+static void initCraftEditionResources()
+{
+    Q_INIT_RESOURCE(craft_edition);
+}
+
 namespace CraftEdition {
+
+void initResources()
+{
+    initCraftEditionResources();
+}
 
 namespace {
 

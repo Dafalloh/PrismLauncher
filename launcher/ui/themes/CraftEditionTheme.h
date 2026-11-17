@@ -35,6 +35,11 @@ inline const QString IconThemeId = QStringLiteral("craft_edition");
 inline const QString CatPackId = QStringLiteral("craft_edition");
 inline const QString CatPackManifest = QStringLiteral(":/craft_edition/catpacks/craft_edition/catpack.json");
 
+/// Registers the Craft Edition resources (theme, icons, cat pack). The launcher logic is a
+/// static library, so its .qrc is only linked in when something references it. Must run
+/// before the theme manager reads any of them; safe to call more than once.
+void initResources();
+
 /// Copies the bundled application theme into @p themeFolder/CraftEdition.
 /// Only files whose content differs are written. Failures are logged, never fatal:
 /// the launcher then falls back to its normal theme selection.
