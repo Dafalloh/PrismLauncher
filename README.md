@@ -1,3 +1,5 @@
+> **Craft Edition Launcher** is a fork of Prism Launcher. It is not Prism Launcher and is not endorsed by or affiliated with the Prism Launcher project. See [CRAFT_EDITION.md](CRAFT_EDITION.md).
+
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/program_info/org.prismlauncher.PrismLauncher.logo-darkmode.svg">

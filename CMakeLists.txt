@@ -175,6 +175,9 @@ include(CTest)
 
 ##################################### Set Application options #####################################
 
+# Craft Edition fork: our defaults must come before Prism's CACHE defaults below.
+include(craft-edition/CraftEdition.cmake)
+
 ######## Set URLs ########
 set(Launcher_NEWS_RSS_URL "https://prismlauncher.org/feed/feed.xml" CACHE STRING "URL to fetch Prism Launcher's news RSS feed from.")
 set(Launcher_NEWS_OPEN_URL "https://prismlauncher.org/news" CACHE STRING "URL that gets opened when the user clicks 'More News'")
