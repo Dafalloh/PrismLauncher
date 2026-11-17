@@ -1,0 +1,33 @@
+{
+    "name": "Craft Edition",
+    "widgets": "Fusion",
+    "qssFilePath": "themeStyle.css",
+    "colors": {
+        "Window": "#0f1012",
+        "WindowText": "#ededef",
+        "Base": "#17181b",
+        "AlternateBase": "#1f2024",
+        "ToolTipBase": "#2a2b30",
+        "ToolTipText": "#ededef",
+        "Text": "#ededef",
+        "Button": "#1f2024",
+        "ButtonText": "#ededef",
+        "BrightText": "#f0524f",
+        "Link": "#3db8cb",
+        "Highlight": "#14a3b8",
+        "HighlightedText": "#111214",
+        "fadeAmount": 0.5,
+        "fadeColor": "#0f1012"
+    },
+    "logColors": {
+        "Launcher": "#3db8cb",
+        "Message": "#c9cad0",
+        "Debug": "#85868d",
+        "Warning": "#f2b13a",
+        "Error": "#f0524f",
+        "Fatal": "#ff8a87",
+        "FatalHighlight": "#3a1615",
+        "WarningHighlight": "#2f2410",
+        "ErrorHighlight": "#2f1615"
+    }
+}

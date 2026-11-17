@@ -1,0 +1,11 @@
+[Icon Theme]
+Name=Craft Edition
+Comment=Line icons for the Craft Edition theme (24px grid, 1.75px stroke)
+Inherits=flat_white
+Directories=scalable
+
+[scalable]
+Size=48
+Type=Scalable
+MinSize=16
+MaxSize=256

@@ -79,6 +79,7 @@
 
 #include "ui/pagedialog/PageDialog.h"
 
+#include "ui/themes/CraftEditionTheme.h"
 #include "ui/themes/ThemeManager.h"
 
 #include "ApplicationMessage.h"
@@ -650,9 +651,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings.reset(new INISettingsObject({ BuildConfig.LAUNCHER_CONFIGFILE, "polymc.cfg", "multimc.cfg" }, this));
 
         // Theming
-        m_settings->registerSetting("IconTheme", QString());
-        m_settings->registerSetting("ApplicationTheme", QString());
-        m_settings->registerSetting("BackgroundCat", QString("kitteh"));
+        // Craft Edition fork: the bundled look is the default for new installs.
+        m_settings->registerSetting("IconTheme", CraftEdition::IconThemeId);
+        m_settings->registerSetting("ApplicationTheme", CraftEdition::ThemeId);
+        m_settings->registerSetting("BackgroundCat", CraftEdition::CatPackId);
 
         // Remembered state
         m_settings->registerSetting("LastUsedGroupForNewInstance", QString());

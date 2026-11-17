@@ -1,0 +1,69 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/icons/craft_edition">
+        <file alias="index.theme">icons/index.theme</file>
+        <file alias="scalable/about.svg">icons/scalable/about.svg</file>
+        <file alias="scalable/accounts.svg">icons/scalable/accounts.svg</file>
+        <file alias="scalable/appearance.svg">icons/scalable/appearance.svg</file>
+        <file alias="scalable/bug.svg">icons/scalable/bug.svg</file>
+        <file alias="scalable/centralmods.svg">icons/scalable/centralmods.svg</file>
+        <file alias="scalable/checkupdate.svg">icons/scalable/checkupdate.svg</file>
+        <file alias="scalable/copy.svg">icons/scalable/copy.svg</file>
+        <file alias="scalable/coremods.svg">icons/scalable/coremods.svg</file>
+        <file alias="scalable/custom-commands.svg">icons/scalable/custom-commands.svg</file>
+        <file alias="scalable/datapacks.svg">icons/scalable/datapacks.svg</file>
+        <file alias="scalable/delete.svg">icons/scalable/delete.svg</file>
+        <file alias="scalable/export.svg">icons/scalable/export.svg</file>
+        <file alias="scalable/externaltools.svg">icons/scalable/externaltools.svg</file>
+        <file alias="scalable/help.svg">icons/scalable/help.svg</file>
+        <file alias="scalable/instance-settings.svg">icons/scalable/instance-settings.svg</file>
+        <file alias="scalable/java.svg">icons/scalable/java.svg</file>
+        <file alias="scalable/language.svg">icons/scalable/language.svg</file>
+        <file alias="scalable/launch.svg">icons/scalable/launch.svg</file>
+        <file alias="scalable/loadermods.svg">icons/scalable/loadermods.svg</file>
+        <file alias="scalable/log.svg">icons/scalable/log.svg</file>
+        <file alias="scalable/minecraft.svg">icons/scalable/minecraft.svg</file>
+        <file alias="scalable/new.svg">icons/scalable/new.svg</file>
+        <file alias="scalable/news.svg">icons/scalable/news.svg</file>
+        <file alias="scalable/notes.svg">icons/scalable/notes.svg</file>
+        <file alias="scalable/proxy.svg">icons/scalable/proxy.svg</file>
+        <file alias="scalable/refresh.svg">icons/scalable/refresh.svg</file>
+        <file alias="scalable/rename.svg">icons/scalable/rename.svg</file>
+        <file alias="scalable/resourcepacks.svg">icons/scalable/resourcepacks.svg</file>
+        <file alias="scalable/screenshots.svg">icons/scalable/screenshots.svg</file>
+        <file alias="scalable/server.svg">icons/scalable/server.svg</file>
+        <file alias="scalable/settings.svg">icons/scalable/settings.svg</file>
+        <file alias="scalable/shaderpacks.svg">icons/scalable/shaderpacks.svg</file>
+        <file alias="scalable/shortcut.svg">icons/scalable/shortcut.svg</file>
+        <file alias="scalable/star.svg">icons/scalable/star.svg</file>
+        <file alias="scalable/status-bad.svg">icons/scalable/status-bad.svg</file>
+        <file alias="scalable/status-good.svg">icons/scalable/status-good.svg</file>
+        <file alias="scalable/status-linked.svg">icons/scalable/status-linked.svg</file>
+        <file alias="scalable/status-locked.svg">icons/scalable/status-locked.svg</file>
+        <file alias="scalable/status-running.svg">icons/scalable/status-running.svg</file>
+        <file alias="scalable/status-yellow.svg">icons/scalable/status-yellow.svg</file>
+        <file alias="scalable/tag.svg">icons/scalable/tag.svg</file>
+        <file alias="scalable/viewfolder.svg">icons/scalable/viewfolder.svg</file>
+        <file alias="scalable/worlds.svg">icons/scalable/worlds.svg</file>
+    </qresource>
+    <!-- Craft Edition theme and background: copied to the data folder by CraftEditionTheme.cpp -->
+    <qresource prefix="/craft_edition">
+        <file>catpacks/craft_edition/catpack.json</file>
+        <file>catpacks/craft_edition/craft-edition.png</file>
+        <file>themes/CraftEdition/resources/checkbox-checked-disabled.svg</file>
+        <file>themes/CraftEdition/resources/checkbox-checked.svg</file>
+        <file>themes/CraftEdition/resources/checkbox-disabled.svg</file>
+        <file>themes/CraftEdition/resources/checkbox-hover.svg</file>
+        <file>themes/CraftEdition/resources/checkbox-partial.svg</file>
+        <file>themes/CraftEdition/resources/checkbox.svg</file>
+        <file>themes/CraftEdition/resources/chevron-down.svg</file>
+        <file>themes/CraftEdition/resources/chevron-right.svg</file>
+        <file>themes/CraftEdition/resources/chevron-up.svg</file>
+        <file>themes/CraftEdition/resources/close.svg</file>
+        <file>themes/CraftEdition/resources/radio-checked.svg</file>
+        <file>themes/CraftEdition/resources/radio-hover.svg</file>
+        <file>themes/CraftEdition/resources/radio.svg</file>
+        <file>themes/CraftEdition/theme.json</file>
+        <file>themes/CraftEdition/themeStyle.css</file>
+    </qresource>
+</RCC>

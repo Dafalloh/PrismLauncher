@@ -863,6 +863,8 @@ SET(LAUNCHER_SOURCES
     ui/themes/ThemeManager.cpp
     ui/themes/ThemeManager.h
     ui/themes/CatPack.cpp
+    ui/themes/CraftEditionTheme.cpp
+    ui/themes/CraftEditionTheme.h
     ui/themes/CatPack.h
     ui/themes/CatPainter.cpp
     ui/themes/CatPainter.h
@@ -1017,6 +1019,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/modplatform/technic/TechnicPage.cpp
     ui/pages/modplatform/technic/TechnicPage.h
 
+    ui/pages/modplatform/CraftEditionPage.cpp
+    ui/pages/modplatform/CraftEditionPage.h
     ui/pages/modplatform/ImportPage.cpp
     ui/pages/modplatform/ImportPage.h
 
@@ -1201,6 +1205,7 @@ qt_add_resources(LAUNCHER_RESOURCES
     resources/breeze_light/breeze_light.qrc
     resources/flat/flat.qrc
     resources/flat_white/flat_white.qrc
+    resources/craft_edition/craft_edition.qrc
     resources/documents/documents.qrc
     resources/shaders/shaders.qrc
     "${CMAKE_CURRENT_BINARY_DIR}/../${Launcher_Branding_LogoQRC}"

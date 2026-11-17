@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>@Launcher_AppID@</id>
+  <name>Craft Edition Launcher</name>
+  <summary>Minecraft launcher for the Craft Edition modpacks, based on Prism Launcher</summary>
+  <developer id="io.github.dafalloh">
+    <name>Craft Edition</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <description>
+    <p>Craft Edition Launcher is a fork of Prism Launcher with the Craft Edition design and a built-in page for the Craft Edition modpacks (Low, Balanced and High presets).</p>
+    <p>It is not Prism Launcher and is not endorsed by or affiliated with the Prism Launcher project.</p>
+  </description>
+  <url type="homepage">https://github.com/Dafalloh/PrismLauncher</url>
+  <url type="bugtracker">https://github.com/Dafalloh/PrismLauncher/issues</url>
+  <url type="vcs-browser">https://github.com/Dafalloh/PrismLauncher</url>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-fantasy">moderate</content_attribute>
+    <content_attribute id="social-chat">intense</content_attribute>
+  </content_rating>
+  <launchable type="desktop-id">@Launcher_AppID@.desktop</launchable>
+</component>

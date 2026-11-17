@@ -84,6 +84,9 @@ jobs:
       BUILD_PLATFORM: official
       BUILD_TYPE: ${{ inputs.build-type || 'Debug' }}
       CMAKE_PRESET: ci
+      # Craft Edition fork: our own API keys from repository secrets, read by craft-edition/CraftEdition.cmake.
+      CRAFT_EDITION_MSA_CLIENT_ID: ${{ secrets.CRAFT_EDITION_MSA_CLIENT_ID }}
+      CRAFT_EDITION_CURSEFORGE_API_KEY: ${{ secrets.CRAFT_EDITION_CURSEFORGE_API_KEY }}
 
       CMAKE_OSX_ARCHITECTURES: x86_64;arm64
       MACOSX_DEPLOYMENT_TARGET: ${{ matrix.macosx-deployment-target }}

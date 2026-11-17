@@ -64,6 +64,7 @@
 #include <QValidator>
 #include <utility>
 
+#include "ui/pages/modplatform/CraftEditionPage.h"
 #include "ui/pages/modplatform/CustomPage.h"
 #include "ui/pages/modplatform/ImportPage.h"
 #include "ui/pages/modplatform/atlauncher/AtlPage.h"
@@ -244,6 +245,7 @@ QList<BasePage*> NewInstanceDialog::getPages()
 
     m_importPage = new ImportPage(this);
 
+    pages.append(new CraftEditionPage(this));  // Craft Edition fork: first source
     pages.append(new CustomPage(this));
     pages.append(m_importPage);
     pages.append(new AtlPage(this));
