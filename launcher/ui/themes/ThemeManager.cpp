@@ -28,6 +28,7 @@
 #include "Result.h"
 #include "ui/themes/BrightTheme.h"
 #include "ui/themes/CatPack.h"
+#include "ui/themes/CraftEditionTheme.h"
 #include "ui/themes/CustomTheme.h"
 #include "ui/themes/DarkTheme.h"
 #include "ui/themes/SystemTheme.h"
@@ -51,6 +52,7 @@ ThemeManager::ThemeManager()
 
     m_defaultPalette = QApplication::palette();
 
+    CraftEdition::installBundledTheme(m_applicationThemeFolder);  // Craft Edition fork
     initializeThemes();
     initializeCatPacks();
 }
@@ -322,6 +324,12 @@ void ThemeManager::initializeCatPacks()
                                                     { "teawie", QObject::tr("Teawie (drawn by SympathyTea)") } };
     for (const auto& [id, name] : defaultCats) {
         addCatPack(std::unique_ptr<CatPack>(new BasicCatPack(id, name)));
+    }
+    // Craft Edition fork: bundled background, read straight from resources.
+    if (auto craftEditionCat = JsonCatPack::create(QFileInfo(CraftEdition::CatPackManifest))) {
+        addCatPack(std::move(*craftEditionCat));
+    } else {
+        themeWarningLog() << "Couldn't load the Craft Edition background:" << craftEditionCat.error();
     }
     if (!m_catPacksFolder.mkpath(".")) {
         themeWarningLog() << "Couldn't create catpacks folder";
